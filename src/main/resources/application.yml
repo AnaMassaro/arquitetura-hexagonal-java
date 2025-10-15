@@ -2,3 +2,8 @@ massaro:
   client:
     address:
       url: http://localhost:8002/addresses
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/hexagonal
