@@ -2,10 +2,11 @@ package com.massaro.hexagonal.application.core.usecase;
 
 import com.massaro.hexagonal.application.core.domain.Customer;
 import com.massaro.hexagonal.application.ports.in.FindCustomerByIdInputPort;
+import com.massaro.hexagonal.application.ports.in.UpdateCustomerInputPort;
 import com.massaro.hexagonal.application.ports.out.FindAddressByZipCodeOutputPort;
 import com.massaro.hexagonal.application.ports.out.UpdateCustomerOutputPort;
 
-public class UpdateCustomerUseCase {
+public class UpdateCustomerUseCase implements UpdateCustomerInputPort {
 
     private final FindCustomerByIdInputPort findCustomerByIdInputPort;
 
