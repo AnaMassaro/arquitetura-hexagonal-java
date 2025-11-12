@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/api/v1/customers")
 public class CustomerController {
@@ -34,10 +36,12 @@ public class CustomerController {
     // @RequestBody converte o JSON do corpo da requisição para o objeto CustomerRequest
     // @Valid ativa as validações configuradas no CustomerRequest (ex: @NotNull, @Size, etc.)
     @PostMapping
-    public ResponseEntity<Void> insert(@Valid @RequestBody CustomerRequest customerRequest) {
+    public ResponseEntity<Map<String, String>> insert(@Valid @RequestBody CustomerRequest customerRequest) {
         var customer = customerMapper.toCustomer(customerRequest);
-        insertCustomerInputPort.insert(customer, customerRequest.getZipCode());
-        return ResponseEntity.ok().build();
+        var customerId = insertCustomerInputPort.insert(customer, customerRequest.getZipCode());
+
+        var response = Map.of("customerId", customerId);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{id}")
