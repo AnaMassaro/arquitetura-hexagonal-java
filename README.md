@@ -23,7 +23,7 @@ O foco principal **não é a integração com Kafka ou APIs externas**, mas sim 
 
 ## Estrutura geral
 
-O projeto segue a separação entre **camadas internas (core)** e **adapters externos**, conforme a arquitetura hexagonal:
+O projeto segue a separação entre **camadas internas (core)** e **adapters**, conforme a arquitetura hexagonal:
 
 - **Application (core, ports)**: contém toda a lógica de negócio, casos de uso, entidades do domínio e as portas (contratos para entrada e saída).
 - **Adapters (in, out)**: implementam as portas de entrada (controllers) e de saída (acessos a banco, APIs, mensagerias etc.).
